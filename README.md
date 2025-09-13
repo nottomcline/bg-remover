@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ### Single image
 
 ```bash
-python remove_bg.py --input path/to/image.jpg --output path/to/output.png
+python bg-remover.py --input path/to/image.jpg --output path/to/output.png
 ```
 
 - `--input` or `-i` : path to the image file
@@ -59,7 +59,7 @@ python remove_bg.py --input path/to/image.jpg --output path/to/output.png
 ### Batch processing (directory)
 
 ```bash
-python remove_bg.py --input path/to/images_folder --output path/to/output_folder
+python bg-remover.py --input path/to/images_folder --output path/to/output_folder
 ```
 
 - All images with supported extensions (`.png, .jpg, .jpeg, .webp, .bmp`) in the folder will be processed.
@@ -68,7 +68,7 @@ python remove_bg.py --input path/to/images_folder --output path/to/output_folder
 ### Optional: Specify model
 
 ```bash
-python remove_bg.py --input images --output output --model u2netp
+python bg-remover.py --input images --output output --model u2netp
 ```
 
 - Common model names: `u2net` (default), `u2netp`, `u2net_human_seg`
