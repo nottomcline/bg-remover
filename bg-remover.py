@@ -1,5 +1,7 @@
-from rembg import remove, new_session
+import argparse
 import os
+
+from rembg import new_session, remove
 
 
 def remove_background_from_image(
@@ -44,8 +46,6 @@ def batch_process(input_dir: str, output_dir: str, model_name: str = None):
 
 
 def main():
-    import argparse
-
     parser = argparse.ArgumentParser(description="Remove backgrounds using rembg")
     parser.add_argument(
         "--input", "-i", type=str, required=True, help="Input image file or directory"
@@ -62,11 +62,15 @@ def main():
     )
     args = parser.parse_args()
 
-    if os.path.isdir(args.input):
-        batch_process(args.input, args.output, model_name=args.model)
-    else:
-        # assume single file
-        remove_background_from_image(args.input, args.output)
+    try:
+        if os.path.isdir(args.input):
+            batch_process(args.input, args.output, model_name=args.model)
+        else:
+            # assume single file
+            remove_background_from_image(args.input, args.output, model_name=args.model)
+    except Exception as e:
+        print("Error: ", e)
+        return
 
 
 if __name__ == "__main__":
