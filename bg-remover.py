@@ -2,13 +2,18 @@ from rembg import remove, new_session
 import os
 
 
-def remove_background_from_image(input_path: str, output_path: str, session=None):
+def remove_background_from_image(
+    input_path: str, output_path: str, model_name: str = None
+):
     """
     Remove background from a single image file.
     """
     # Read input as bytes
     with open(input_path, "rb") as f:
         input_data = f.read()
+
+    # Create a session once, to speed up repeated calls
+    session = new_session(model_name or "u2net")
 
     # The rembg API remove() takes parameters: input, session, etc.
     # Force output as bytes
@@ -26,9 +31,6 @@ def batch_process(input_dir: str, output_dir: str, model_name: str = None):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Create a session once, to speed up repeated calls
-    session = new_session(model_name)
-
     for fname in os.listdir(input_dir):
         basename, extension = os.path.splitext(fname)
         extension_lower = extension.lower()
@@ -38,7 +40,7 @@ def batch_process(input_dir: str, output_dir: str, model_name: str = None):
                 output_dir, f"{basename}_no_bg.png"
             )  # use PNG to retain transparency
             print(f"Processing {input_path} -> {output_path}")
-            remove_background_from_image(input_path, output_path, session=session)
+            remove_background_from_image(input_path, output_path, model_name=model_name)
 
 
 def main():
