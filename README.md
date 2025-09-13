@@ -29,12 +29,12 @@ The output is saved as PNG files to preserve transparency.
 
 ```bash
 # Windows
-python -m venv venv
-.\venv\Scripts\activate
+python -m venv .venv
+.\.venv\Scripts\activate
 
 # macOS / Linux
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 ```
 
 ### 2. Install dependencies
