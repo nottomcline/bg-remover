@@ -72,3 +72,4 @@ python remove_bg.py --input images --output output --model u2netp
 ```
 
 - Common model names: `u2net` (default), `u2netp`, `u2net_human_seg`
+- [see all models](https://github.com/danielgatis/rembg?tab=readme-ov-file#models)
