@@ -47,7 +47,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Single image
+### Single image
 
 ```bash
 python remove_bg.py --input path/to/image.jpg --output path/to/output.png
@@ -56,7 +56,7 @@ python remove_bg.py --input path/to/image.jpg --output path/to/output.png
 - `--input` or `-i` : path to the image file
 - `--output` or `-o` : path to the output file (will be PNG to preserve transparency)
 
-Batch processing (directory)
+### Batch processing (directory)
 
 ```bash
 python remove_bg.py --input path/to/images_folder --output path/to/output_folder
@@ -65,7 +65,7 @@ python remove_bg.py --input path/to/images_folder --output path/to/output_folder
 - All images with supported extensions (`.png, .jpg, .jpeg, .webp, .bmp`) in the folder will be processed.
 - Output files will have `_no_bg` appended to their filename.
 
-Optional: Specify model
+### Optional: Specify model
 
 ```bash
 python remove_bg.py --input images --output output --model u2netp
